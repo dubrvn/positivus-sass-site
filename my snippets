@@ -24,7 +24,7 @@ ctrl shift P
   }
   
 
-//HTML <image>
+//HTML image
 {
 	"image": {
 		"scope": "html",
@@ -39,5 +39,22 @@ ctrl shift P
 			">"
 		],
 		"description": "image snippet"
+	}
+}
+
+
+//HTML but
+{
+	"my button": {
+	  "prefix": "but",
+	  "body": [
+		"<button",
+		"\tclass=\"$1\"",
+		"\ttype=\"$2\"",
+		">"
+		"$3",
+		"</button>"
+	  ],
+	  "description": "Базовая разметка кнопки"
 	}
 }
