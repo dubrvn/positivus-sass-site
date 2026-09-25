@@ -1,0 +1,28 @@
+:root {
+	--color-dark: #191A23;
+	--color-dark-alt: #292A32;
+	--color-light: #FFFFFF;
+	--color-accent: #B9FF66;
+	--color-gray: #F3F3F3;
+	--color-gray-alt: #898989;
+
+	--border: 1px solid var(--color-dark); //обводка у кнопок
+	--border-radius: 14px; //скругления у кнопок
+	--border-radius-small: 7px;
+	--border-radius-large: 45px;
+
+	--shadow: 0 5px 0 0 var(--color-dark);
+
+	--font-family-base: 'Space Grotesk', sans-serif;
+
+	//параметры сетки
+	--container-width: 1240px;
+	--container-padding-x: 20px; // внутренние отступы как на мобиле
+
+	--section-padding-y: 70px; // расстояние между секциями 140px. Так как паддинги не схлапывается, делим пополам
+
+	--input-height: 59px; // высота полей ввода
+	--button-height: 68px; // высота базовых кнопок
+
+	--transition-duration: 0.2s;
+}

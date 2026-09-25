@@ -1,0 +1,43 @@
+вызвать палитру сниппетов
+ctrl shift P
+
+
+//HTML custom
+{
+	"Custom HTML5 Structure": {
+	  "prefix": "!",
+	  "body": [
+		"<!DOCTYPE html>",
+		"<html lang=\"en\">",
+		"\t<head>",
+		"\t\t<meta charset=\"UTF-8\">",
+		"\t\t<meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">",
+		"\t\t<title>${1:Document}</title>",
+		"\t</head>",
+		"\t<body>",
+		"\t\t${2}",
+		"\t</body>",
+		"</html>"
+	  ],
+	  "description": "Базовая HTML‑структура с кастомным viewport"
+	}
+  }
+  
+
+//HTML <image>
+{
+	"image": {
+		"scope": "html",
+		"prefix": "image",
+		"body": [
+			"<img class=\"$1\""
+			"src=\"\""
+			"alt=\"\""
+			"width=\"100\""
+			"height=\"100\""
+			"loading=\"lazy\""
+			">"
+		],
+		"description": "image snippet"
+	}
+}
