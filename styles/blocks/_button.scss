@@ -1,7 +1,8 @@
 @use '../mixins' as *;
 @use '../media' as *;
 @use '../variables' as *;
-
+@use '../utils' as *;
+@use '../globals' as *;
 
 //сначала стилизуем черную кнопку
 .button {
@@ -24,4 +25,5 @@
 		color: var(--color-dark);
 		background-color: transparent;
 	}
+	
 }
