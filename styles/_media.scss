@@ -8,6 +8,11 @@ $mobile-above: 768px; // если верстаем mobile first
 $mobile: 767px;
 
 
+/*Добавили группу для медиазапроса близкого к самому мелкому, когда делали hero__partners*/
+$mobile-s-above: 481px; // если верстаем mobile first
+$mobile-s: 480px;
+
+
 @mixin desktop-above {
 	@media (min-width: $desktop-above) {
 		@content;
@@ -42,6 +47,19 @@ $mobile: 767px;
 
 @mixin mobile {
 	@media (max-width: $mobile) {
+		@content;
+	}
+}
+
+
+@mixin mobile-s-above {
+	@media (min-width: $mobile-s-above) {
+		@content;
+	}
+}
+
+@mixin mobile-s {
+	@media (max-width: $mobile-s) {
 		@content;
 	}
 }

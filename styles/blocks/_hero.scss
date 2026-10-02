@@ -1,0 +1,123 @@
+@use '../mixins' as *;
+@use '../media' as *;
+@use '../variables' as *;
+@use '../utils' as *;
+@use '../globals' as *;
+
+.hero {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--section-padding-y);
+
+	@include desktop {
+		row-gap: 60px;
+	}
+
+	&__main {
+		display: flex;
+		justify-content: space-between;
+		align-items: start; /*чтобы прижать картинку к верху*/
+		column-gap: 30px; /*добавили на глаз, чтобы при сужении экрана не слипалось*/
+
+		@include mobile {
+			flex-direction: column;
+		}
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		row-gap: 35px;
+		max-width: 531px;
+
+		@include mobile {
+			display: contents; /*Обертка выше имеет flex, но обертка body мешает. Данное свойство позволяет обойти обёртку hero__body и управлять потоком внутри. Все элементы теперь подчиняются hero__main*/
+		}
+	}
+
+	&__title {
+		@include mobile {
+			order: -2;
+			margin-bottom: 10px;
+		}
+	}
+
+	&__decription {
+		font-size: 20px;
+		line-height: 1.4;
+
+		@include mobile {
+			margin-bottom: 40px;
+		}
+	}
+
+	&__button {
+		@include mobile {
+			width: 100%;
+			max-width: 390px;
+			margin-inline: auto; /*центрируем по горизонтали*/
+		}
+	}
+
+	&__partners {
+
+		&-list {
+			display: flex;
+			justify-content: space-between;
+			column-gap: 37px; /*чтоб не слипалось подставили значение из мобилы*/
+
+			@include tablet {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				row-gap: 20px;
+			}
+
+			@include mobile-s {
+				column-gap: 0;
+				--heroPartnersWidthOffsetX: 60px; /* Создаем локальную переменную. настолько выпирают за края блок с логотипами*/
+				/*задаём ширину, которая шире экрана и смещаем влево, с учетом ширины у container*/
+				width: calc(100vw + var(--heroPartnersWidthOffsetX) * 2);
+				margin-left: calc(
+					(var(--heroPartnersWidthOffsetX) + var(--container-padding-x)) 
+					* -1
+				);
+			}
+		}
+
+		&-item {
+			@include tablet {
+				display: flex;
+				justify-content: center;
+			}
+
+			@include mobile-s {
+				justify-content: start;
+
+				/*первым трём элемента указываем end*/
+				&:nth-child(-n + 3) {
+					justify-content: end;
+				}
+			}
+		}
+
+		&-image {
+			filter: grayscale(1);
+		}
+	}
+
+	&__image {
+
+		@include tablet {
+			max-width: 40%;
+			height: auto; /*чтобы сохранялись пропорции*/
+		}
+
+		@include mobile {
+			order: -1;
+			width: 100%; /*чтобы растянуть во всю ширину экрана мобилы*/
+			max-width: 100%;
+			margin-bottom: 20px;
+		}
+	}
+}

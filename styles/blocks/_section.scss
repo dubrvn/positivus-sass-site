@@ -1,0 +1,13 @@
+@use '../mixins' as *;
+@use '../media' as *;
+@use '../variables' as *;
+@use '../utils' as *;
+@use '../globals' as *;
+
+.section {
+	padding-block: var(--section-padding-y);
+
+	&--hidden-x {
+		overflow-x: hidden; /*чтобы убрать горизонтальный скрол при выпадении из ширины экрана элементов*/
+	}
+}
