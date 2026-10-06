@@ -1,0 +1,17 @@
+@use '../mixins' as *;
+@use '../media' as *;
+@use '../variables' as *;
+@use '../utils' as *;
+@use '../globals' as *;
+
+.services {
+	&__list {
+		&:not(:last-child) {
+			margin-bottom: 100px;
+
+			@include mobile {
+				margin-bottom: 70px;
+			}
+		}
+	}
+}
