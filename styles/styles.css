@@ -959,4 +959,123 @@ h4 {
   color: var(--color-accent);
 }
 
+.process__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  counter-reset: custom-counter; /*сбрасываем нумерацию по умолчанию*/
+  list-style: none;
+}
+@media (max-width: 767px) {
+  .process__list {
+    row-gap: 20px;
+  }
+}
+.process__item {
+  --counterContent: counter(custom-counter);
+  counter-increment: custom-counter;
+  /*До 9 элемента нолик в начале есть, потом нет*/
+}
+.process__item:nth-child(-n+9) {
+  --counterContent: '0' counter(custom-counter);
+}
+.process__accordeon {
+  --indicatorVerticalRotate: 90deg;
+  padding: 40px 60px;
+  background-color: var(--color-gray);
+  border: var(--border);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow);
+  transition-duration: var(--transition-duration);
+}
+@media (hover: hover) {
+  .process__accordeon:hover {
+    background-color: var(--color-accent);
+  }
+}
+@media (hover: none) {
+  .process__accordeon:active {
+    background-color: var(--color-accent);
+  }
+}
+@media (max-width: 767px) {
+  .process__accordeon {
+    padding: 30px;
+  }
+}
+.process__accordeon[open] {
+  /*поварачиваем вертикальный пседоэлемент, когда аккордеон открыт*/
+  --indicatorVerticalRotate: 0deg;
+  background-color: var(--color-accent);
+}
+.process__accordeon-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 50px;
+  cursor: pointer;
+  user-select: none; /*запрещает пользователю выделять текст в элементе*/
+}
+@media (max-width: 767px) {
+  .process__accordeon-header {
+    column-gap: 28px; /*взяли по самому длинному загу*/
+  }
+}
+.process__accordeon-title {
+  font-size: clamp(18px, 2.0833333333vw, 30px);
+  display: flex;
+  align-items: center;
+  column-gap: 25px;
+}
+@media (max-width: 767px) {
+  .process__accordeon-title {
+    column-gap: 33px;
+  }
+}
+.process__accordeon-title::before {
+  content: var(--counterContent); /*указываем значение, которое объявили в custom-reset. Обрати внимание на 0*/
+  font-size: 2em; /*Размер в 2 раза больше чем у родителя*/
+}
+@media (max-width: 767px) {
+  .process__accordeon-title::before {
+    font-size: 30px;
+  }
+}
+.process__accordeon-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 58px;
+  aspect-ratio: 1;
+  flex-shrink: 0; /*чтобы не сжимался при сужении экрана*/
+  position: relative;
+  background-color: var(--color-gray);
+  border: var(--border);
+  border-radius: 50%;
+}
+@media (max-width: 767px) {
+  .process__accordeon-indicator {
+    width: 30px;
+  }
+}
+.process__accordeon-indicator::before, .process__accordeon-indicator::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  content: "";
+  width: 45%; /* вычисляем от родителя*/
+  height: 10%;
+  background-color: var(--color-dark);
+}
+.process__accordeon-indicator::after {
+  transition-duration: var(--transition-duration);
+  rotate: var(--indicatorVerticalRotate);
+}
+.process__accordeon-body {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: var(--border);
+}
+
 /*# sourceMappingURL=styles.css.map */

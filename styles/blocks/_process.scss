@@ -1,0 +1,131 @@
+@use '../mixins' as *;
+@use '../media' as *;
+@use '../variables' as *;
+@use '../utils' as *;
+@use '../globals' as *;
+
+.process {
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		row-gap: 30px;
+		counter-reset: custom-counter; /*сбрасываем нумерацию по умолчанию*/
+		list-style: none;
+
+		@include mobile {
+			row-gap: 20px;
+		}
+	}
+
+	&__item {
+		--counterContent: counter(custom-counter);
+
+		counter-increment: custom-counter;
+
+		/*До 9 элемента нолик в начале есть, потом нет*/
+		&:nth-child(-n + 9) {
+			--counterContent: '0' counter(custom-counter);
+		}
+	}
+
+	&__accordeon {
+		--indicatorVerticalRotate: 90deg;
+
+		padding: 40px 60px;
+		background-color: var(--color-gray);
+		border: var(--border);
+		border-radius: var(--border-radius-large);
+		box-shadow: var(--shadow);
+		transition-duration: var(--transition-duration);
+
+		@include hover {
+			background-color: var(--color-accent);
+		}
+
+		@include mobile {
+			padding: 30px;
+		}
+
+		&[open] {
+			/*поварачиваем вертикальный пседоэлемент, когда аккордеон открыт*/
+			--indicatorVerticalRotate: 0deg;
+
+			background-color: var(--color-accent);
+
+			
+		}
+
+		&-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			column-gap: 50px;
+			cursor: pointer;
+			user-select: none; /*запрещает пользователю выделять текст в элементе*/
+
+			@include mobile {
+				column-gap: 28px; /*взяли по самому длинному загу*/
+			}
+		}
+
+		&-title {
+			@include fluid-text(30, 18); 
+
+			display: flex;
+			align-items: center;
+			column-gap: 25px;
+
+			@include mobile {
+				column-gap: 33px;
+			}
+
+			&::before {
+				content: var(--counterContent); /*указываем значение, которое объявили в custom-reset. Обрати внимание на 0*/
+				font-size: 2em; /*Размер в 2 раза больше чем у родителя*/
+
+				@include mobile {
+					font-size: 30px;
+				}
+			}
+		}
+
+		&-indicator {
+			@include flex-center;
+			@include square(58px);
+
+			flex-shrink: 0; /*чтобы не сжимался при сужении экрана*/
+			position: relative;
+			background-color: var(--color-gray);
+			border: var(--border);
+			border-radius: 50%;
+
+			@include mobile {
+				width: 30px;
+			}
+
+			&::before,
+			&::after {
+				@include abs-center;
+
+				content: "";
+				width: 45%; /* вычисляем от родителя*/
+				height: 10%; 
+				background-color: var(--color-dark);
+			}
+
+			&::after {
+				transition-duration: var(--transition-duration);
+				rotate: var(--indicatorVerticalRotate);
+			}
+
+		}
+
+		&-body {
+			margin-top: 30px;
+			padding-top: 30px;
+			border-top: var(--border);
+		}
+	}
+
+}
