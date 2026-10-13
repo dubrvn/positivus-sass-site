@@ -58,3 +58,38 @@ ctrl shift P
 	  "description": "Базовая разметка кнопки"
 	}
 }
+
+//HTML inp
+{
+	"Custom Text Input": {
+	"prefix": "radioinput",
+	"body": [
+		"<input",
+		"\tclass=\"$1\"",
+		"\tname=\"input-name\"",
+		"\ttype=\"radio\"",
+		"\tvalue=\"Подпись к радио кнопке\"",
+		">"
+	],
+	"description": "Кастомный radio input"
+}
+}
+
+//HTML textinput
+{
+	"Custom Text Input": {
+	"prefix": "textinput",
+	"body": [
+		"<input",
+		"\tclass=\"$1\"",
+		"\tid=\"input-id\"",
+		"\tname=\"input-name\"",
+		"\tplaceholder=\"Text\"",
+		"\ttype=\"text\"",
+		">"
+	],
+	"description": "Кастомный text input"
+}
+}
+
+
