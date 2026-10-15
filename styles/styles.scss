@@ -6,6 +6,9 @@
 @use 'utils' as *;
 @use 'globals' as *;
 
+@use 'blocks/field' as *;
+@use 'blocks/radios' as *;
+@use 'blocks/radio' as *;
 @use 'blocks/button' as *;
 @use 'blocks/grid' as *;
 @use 'blocks/burger-button' as *;
@@ -26,6 +29,7 @@
 @use 'blocks/reviews' as *;
 @use 'blocks/review-card' as *;
 @use 'blocks/pagination' as *;
+@use 'blocks/contact' as *;
 
 
 

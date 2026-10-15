@@ -1,0 +1,10 @@
+@use '../mixins' as *;
+@use '../media' as *;
+@use '../variables' as *;
+@use '../utils' as *;
+@use '../globals' as *;
+
+.radios {
+	display: flex;
+	column-gap: 35px;
+}
